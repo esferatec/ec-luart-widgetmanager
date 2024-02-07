@@ -1,6 +1,6 @@
 # WM.LUA
 
-The code is a widget management module written in Lua. It defines a WidgetManager object that contains methods for managing widgets.
+The code is a lua module for managing widgets. It defines a WidgetManager object that provides methods to perform operations on a collection of widgets.
 
 ## Constructor
 
@@ -8,7 +8,7 @@ The code is a widget management module written in Lua. It defines a WidgetManage
 WidgetManager() -> object
 ```
 
-This function initializes a new instance of the widget manager object. It returns the newly created object.
+The code above initializes a new instance of the widget manager object. It returns the newly created object.
 
 ## Method - add
 
@@ -16,7 +16,7 @@ This function initializes a new instance of the widget manager object. It return
 WidgetManager:add(widget: object, name: string) -> none
 ```
 
-This function add adds a widget to the WidgetManager object and sets its zindex. It takes an object widget and a string name as parameters. It first checks if the widget is a valid child widget using the isValidChild function. If it is not a valid child widget or the name is not a string, the function returns early. Otherwise, it adds the widget to the children table using the name as the key. If the widget does not have a zindex property, it sets it to the next available index in the zorder table.
+This function adds a widget to the WidgetManager object and sets its zindex. It takes an object widget and a string name as parameters. It first checks if the widget is a valid child widget using the isValidChild function. If it is not a valid child widget or the name is not a string, the function returns early. Otherwise, it adds the widget to the children table using the name as the key. If the widget does not have a zindex property, it sets it to the next available index in the zorder table.
 
 ## Method - reorder
 
@@ -24,7 +24,7 @@ This function add adds a widget to the WidgetManager object and sets its zindex.
 WidgetMangager:reorder() -> none
 ```
 
-This function reorders the widgets in the zorder table based on their zindex property. It uses the table.sort function with a custom comparison function to sort the widgets in ascending order of their zindex.
+This function reorders the widgets in the zorder table based on their zindex property. It uses the table sort function with a custom comparison function to sort the widgets in ascending order of their zindex.
 
 ## Method - apply
 
@@ -32,7 +32,7 @@ This function reorders the widgets in the zorder table based on their zindex pro
 WidgetManager:apply() -> none
 ```
 
-This function places the widgets in the zorder table in the given order. It iterates over the zorder table using ipairs and calls the tofront method on each widget to position it at the back.
+This function places the widgets in the zorder table in the given order. It iterates over the zorder table and calls the tofront method on each widget to position it at the front.
 
 ## Method - hide
 
@@ -49,6 +49,22 @@ WidgetManager:show() -> none
 ```
 
 This function shows all the child widgets by setting their visible property to true. It iterates over the children table using the each function and sets the visible property of each child widget to true.
+
+## Method - disable
+
+```Lua
+WidgetManager:disable() -> none
+```
+
+This method is responsible for disabling all child widgets. It achieves this by iterating over each child widget and setting its enabled property to false.
+
+## Method - enable
+
+```Lua
+WidgetManager:enable() -> none
+```
+
+This method, on the other hand, enables all child widgets. It follows a similar approach as the disable method, but instead sets the enabled property to true.
 
 ## Method - change
 

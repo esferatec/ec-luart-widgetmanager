@@ -4,7 +4,6 @@ local wm = {}
 -- Checks if the parameter is a valid child widget.
 -- isValidChild(parameter: any) -> boolean
 local function isValidChild(parameter)
-  local childType = type(parameter)
   local invalidTypes = {
     "nil",
     "boolean",
@@ -14,11 +13,7 @@ local function isValidChild(parameter)
     "function",
     "thread" }
 
-  for _, invalidType in ipairs(invalidTypes) do
-    if string.find(childType, invalidType) then return false end
-  end
-
-  return true
+    return not table.concat(invalidTypes, ","):find(type(parameter))
 end
 
 -- Checks if the parameter is a string type.
@@ -47,6 +42,7 @@ end
 function WidgetManager:add(widget, name)
   if not isValidChild(widget) then return end
   if not isString(name) then return end
+  if name == "" then return end
 
   self.children[name] = widget
 
@@ -75,7 +71,9 @@ end
 -- hide() -> none
 function WidgetManager:hide()
   for child in each(self.children) do
-    child['visible'] = false
+    if not isNil(child.visible) then
+      child.visible = false
+    end
   end
 end
 
@@ -83,7 +81,29 @@ end
 -- show() -> none
 function WidgetManager:show()
   for child in each(self.children) do
-    child.visible = true
+    if not isNil(child.visible) then
+      child.visible = true
+    end
+  end
+end
+
+-- Disables all child widgets.
+-- disable() -> none
+function WidgetManager:disable()
+  for child in each(self.children) do
+    if not isNil(child.enabled) then
+      child.enabled = false
+    end
+  end
+end
+
+-- Enables all child widgets.
+-- enable() -> none
+function WidgetManager:enable()
+  for child in each(self.children) do
+    if not isNil(child.enabled) then
+      child.enabled = true
+    end
   end
 end
 
@@ -93,11 +113,13 @@ function WidgetManager:change(key, value)
   if not isString(key) then return end
 
   for child in each(self.children) do
-    child[key] = value
+    if not isNil(child[key]) then
+      child[key] = value
+    end
   end
 end
 
--- Sets the focus to a specific widget.
+-- Sets the focus to a specific child widget.
 -- focus(name: string) -> none
 function WidgetManager:focus(name)
   if not isString(name) then return end

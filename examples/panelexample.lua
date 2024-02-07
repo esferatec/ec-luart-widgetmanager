@@ -3,6 +3,7 @@ local wm = require("ecluart.wm")
 
 local win = ui.Window("PanelSample", "fixed", 400, 300)
 win.WM = wm.WidgetManager()
+win.WM_BUTTONS = wm.WidgetManager()
 
 local panel1 = ui.Panel(win, 0, 0, 100, 100)
 panel1.border = true
@@ -30,6 +31,11 @@ local button3 = ui.Button(win, "Example 3", 200, 80)
 local button4 = ui.Button(win, "Example 4", 200, 110)
 local button5 = ui.Button(win, "Hide All Panels", 200, 140)
 local button6 = ui.Button(win, "Show All Panels", 200, 170)
+
+win.WM_BUTTONS:add(button1, "button1")
+win.WM_BUTTONS:add(button2, "button2")
+win.WM_BUTTONS:add(button3, "button3")
+win.WM_BUTTONS:add(button4, "button4")
 
 function button1:onClick()
   panel1.zindex = 4
@@ -69,10 +75,12 @@ end
 
 function button5:onClick()
   win.WM:hide()
+  win.WM_BUTTONS:disable()
 end
 
 function button6:onClick()
   win.WM:show()
+  win.WM_BUTTONS:enable()
 end
 
 win.WM:apply()
