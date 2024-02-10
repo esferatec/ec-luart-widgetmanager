@@ -1,5 +1,5 @@
 -- Defines a widget management module.
-local wm = {}
+local wm = {} -- version 2.0
 
 -- Checks if the parameter is a valid child widget.
 -- isValidChild(parameter: any) -> boolean
@@ -59,7 +59,7 @@ function WidgetManager:reorder()
   table.sort(self.zorder, function(a, b) return a.zindex < b.zindex end)
 end
 
--- Places the widget in the given order.
+-- Places the widget in the given zindex order.
 -- apply() -> none
 function WidgetManager:apply()
   for _, widget in ipairs(self.zorder) do
@@ -123,7 +123,10 @@ end
 -- focus(name: string) -> none
 function WidgetManager:focus(name)
   if not isString(name) then return end
-  self.children[name]:show()
+
+  if not isNil(self.children[name]) then
+    self.children[name]:show()
+  end
 end
 
 -- Initializes a new widget manager instance.

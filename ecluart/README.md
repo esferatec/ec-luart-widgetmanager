@@ -69,7 +69,7 @@ This method, on the other hand, enables all child widgets. It follows a similar 
 ## Method - change
 
 ```Lua
-WidgetManager:change() -> none
+WidgetManager:change(key: string, value: any) -> none
 ```
 
 This function changes a property for all the child widgets. It takes a string key and any value as parameters. It first checks if the key is a string. If it is not, the function returns early. Otherwise, it iterates over the children table using the each function and sets the key property of each child widget to the given value.
@@ -77,7 +77,7 @@ This function changes a property for all the child widgets. It takes a string ke
 ## Method - focus
 
 ```Lua
-WidgetManager:focus() -> none
+WidgetManager:focus(name: string) -> none
 ```
 
 This function sets the focus to a specific widget by showing it. It takes a string name as a parameter. It first checks if the name is a string. If it is not, the function returns early. Otherwise, it shows the child widget with the given name by calling the show method on it.
