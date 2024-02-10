@@ -10,9 +10,7 @@ The project is a widget management module written in Lua. It defines a WidgetMan
 
 ## Features
 
-The project provides a modular and flexible way to manage widgets in desktop applications. It allows you to add, reorder, hide, show, and change properties of child widgets.
-
-Widget: A widget is a graphical element or component in a GUI application, such as a button, text box, or image.
+The project provides a modular and flexible way to manage widgets in desktop applications. It allows you to add, reorder, hide, show, and change properties of child widgets. Several widget managers can be used in one application.
 
 Z-index: The z-index determines the stacking order of widgets on the screen. Widgets with higher z-index values appear on top of widgets with lower z-index values.
 
