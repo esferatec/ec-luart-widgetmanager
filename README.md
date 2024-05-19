@@ -2,15 +2,11 @@
 
 The project is a widget management module written in Lua. It defines a WidgetManager object that contains methods for managing widgets in LuaRT desktop applications.
 
-[![Lua 5.4.6](https://badgen.net/badge/Lua/5.4.6/yellow)](https://github.com/lua/lua)
-[![LuaRT 1.7.0](https://badgen.net/badge/LuaRT/1.7.0/blue)](https://github.com/samyeyo/LuaRT)
-[![LuaCheck 1.1.1](https://badgen.net/badge/LuaCheck/1.1.1/green)](https://github.com/lunarmodules/luacheck)
+[![LuaRT 1.8.0](https://badgen.net/badge/LuaRT/1.8.0/blue)](https://github.com/samyeyo/LuaRT)
 
 ## Features
 
 The project provides a modular and flexible way to manage widgets in desktop applications. It allows you to add, reorder, hide, show, and change properties of child widgets. Several widget managers can be used in one application.
-
-zindex: The z-index determines the stacking order of widgets on the screen. Widgets with higher z-index values appear on top of widgets with lower z-index values.
 
 ## Installation
 
@@ -50,23 +46,7 @@ The code above initializes a new instance of the widget manager object. It retur
 WidgetManager:add(widget: object, name: string) -> none
 ```
 
-This function adds a widget to the WidgetManager object and sets its zindex. It takes an object widget and a string name as parameters. It first checks if the widget is a valid child widget using the isValidChild function. If it is not a valid child widget or the name is not a string, the function returns early. Otherwise, it adds the widget to the children table using the name as the key. If the widget does not have a zindex property, it sets it to the next available index in the zorder table.
-
-## Method - reorder
-
-```Lua
-WidgetMangager:reorder() -> none
-```
-
-This function reorders the widgets in the zorder table based on their zindex property. It uses the table sort function with a custom comparison function to sort the widgets in ascending order of their zindex.
-
-## Method - apply
-
-```Lua
-WidgetManager:apply() -> none
-```
-
-This function places the widgets in the zorder table in the given order. It iterates over the zorder table and calls the tofront method on each widget to position it at the front.
+This function adds a widget to the WidgetManager object. It takes an object widget and a string name as parameters. It first checks if the widget is a valid child widget using the isValidChild function. If it is not a valid child widget or the name is not a string, the function returns early. Otherwise, it adds the widget to the children table using the name as the key.
 
 ## Method - hide
 
