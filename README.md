@@ -1,12 +1,12 @@
 # ec-luart-widgetmanager
 
-The project is a widget management module written in Lua. It defines a WidgetManager object that handels properties of widgets in LuaRT desktop applications.
+The project is a widget management module written in Lua. It defines a WidgetManager object  that contains methods for managing widgets in LuaRT desktop applications.
 
 [![LuaRT 2.1.0](https://badgen.net/badge/LuaRT/2.1.0/blue)](https://github.com/samyeyo/LuaRT)
 
 ## Features
 
-The project provides a modular and flexible way to manage widgets in desktop applications. It allows easy addition of widgets and their corresponding properties. Several widget managers can be used in one application.
+The project provides a modular and flexible way to manage widgets in desktop applications. It allows you to add, hide, show, disable and enable child widgets. Several widget managers can be used in one application.
 
 ## Installation
 
