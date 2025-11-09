@@ -5,15 +5,16 @@ local wm = {} -- version 2025.11
 -- isValidChild(parameter: any) -> boolean
 local function isValidChild(parameter)
   local invalidTypes = {
-    "nil",
-    "boolean",
-    "number",
-    "string",
-    "userdata",
-    "function",
-    "thread" }
+    ["nil"] = true,
+    ["boolean"] = true,
+    ["number"] = true,
+    ["string"] = true,
+    ["userdata"] = true,
+    ["function"] = true,
+    ["thread"] = true
+  }
 
-  return not table.concat(invalidTypes, ","):find(type(parameter))
+  return not invalidTypes[type(parameter)]
 end
 
 -- Checks if the parameter is a string type.
